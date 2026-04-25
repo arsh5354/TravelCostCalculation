@@ -2,5 +2,10 @@ Feature: Login Negative Test
 
   Scenario: Invalid Google login
     Given I am on Booking.com homepage for login
-    When I try to login with invalid email "wrong@emailaddress"
+    When I try to login with invalid email "<email>"
     Then Error message should be displayed
+
+    Examples:
+      | email               |
+      | wrong@emailaddress       |
+      | secondWrong@emailaddress |

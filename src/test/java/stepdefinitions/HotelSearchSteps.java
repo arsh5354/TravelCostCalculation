@@ -15,21 +15,24 @@ public class HotelSearchSteps {
         hotelPage = new HotelSearchPage(DriverManager.getDriver());
     }
 
-    @When("I search hotels in {string}")
-    public void search_hotels(String city) {
+    @When("I search hotels in {string} for {int} days for {int} people")
+    public void search_hotels(String city, Integer numberOfDays, Integer numberOfPeople) {
         hotelPage.closePopup();
         hotelPage.enterDestination(city);
         hotelPage.selectNairobiOption();
 
         LocalDate checkIn = LocalDate.now().plusDays(1);
-        LocalDate checkOut = checkIn.plusDays(5);
+        LocalDate checkOut = checkIn.plusDays(numberOfDays);
         hotelPage.selectCheckInDate(checkIn);
         hotelPage.selectCheckOutDate(checkOut);
 
         hotelPage.openPersonsSelector();
-        hotelPage.setAdults(4);
-
-        hotelPage.clickSearch();
+        hotelPage.setAdults(numberOfPeople);        
+    }
+    
+    @When("Sort by top reviewed and apply filter for {string}")
+    public void sort_by_top_reviewed_and_apply_filter_for(String filterName) {
+    	hotelPage.clickSearch();
         hotelPage.sortByTopReviewed();
         hotelPage.filterFreeWifi();
         hotelPage.printHotelResults();
