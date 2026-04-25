@@ -18,9 +18,11 @@ import utils.RetryAnalyzer;
         		 "pretty",                                 // Console output with formatting
         	        "html:target/cucumber-html-report.html",  // HTML report
         	        "json:target/cucumber-report.json",       // JSON report
-        	        "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm" // Allure integration
+        	        "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm", // Allure integration
+        	        "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
         },
-        monochrome = true
+        monochrome = true,
+        dryRun = false
 )
 @Listeners(utils.ExtentReportManager.class)
 public class TestRunner extends AbstractTestNGCucumberTests {

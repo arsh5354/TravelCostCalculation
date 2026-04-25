@@ -48,7 +48,7 @@ public class CruisePage {
 	private List<WebElement> cruises;
  
 	// Cruise prices
-	@FindBy(xpath = "//div[@data-testid='card']/descendant::a[contains(text(),'Cruise')]/ancestor::div[@class='css-2kol2l']/following-sibling::div/descendant::div[@data-testid='price']/descendant::div[@class='e7addce19e css-g82t4m']")
+	@FindBy(xpath = "//div[@class=\"css-19q6r6y\"]/descendant::a[contains(text(),'Cruise')]/ancestor::li/descendant::div[@class=\"e7addce19e css-1iufin4\"]")
 	private List<WebElement> prices;
  
 	public CruisePage(WebDriver driver) {
@@ -69,10 +69,10 @@ public class CruisePage {
 	public void enterDestination(String city) {
 		searchInput.click();
 		searchInput.sendKeys(city);
+		wait.until(ExpectedConditions.visibilityOf(londonOption)).click();
 	}
  
 	public void selectLondonOption() {
-		wait.until(ExpectedConditions.visibilityOf(londonOption)).click();
 	}
  
 	public void selectCheckInDate(LocalDate date) {
