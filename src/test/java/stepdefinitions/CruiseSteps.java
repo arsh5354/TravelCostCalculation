@@ -38,11 +38,11 @@ public class CruiseSteps {
     public void apply_filter_of_cruises_and_boats(String filterName) {
     	  cruisePage.clickSearch();
           cruisePage.expandCruiseFilter(js);
-          cruisePage.printCruiseDetails(js);
     }
     
     @Then("Cruise results should be displayed")
     public void verify_results() throws IOException {
+    	cruisePage.printCruiseDetails(js);
         System.out.println("Cruises displayed successfully!");
     }
 }

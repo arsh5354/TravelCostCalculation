@@ -11,7 +11,6 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
  
- 
 public class CruisePage {
 	WebDriver driver;
 	WebDriverWait wait;
@@ -44,12 +43,8 @@ public class CruisePage {
 	private WebElement cruiseFilter;
  
 	// Cruise cards
-	@FindBy(xpath = "//div[@data-testid='card']/descendant::a[contains(text(),'Cruise')]")
+	@FindBy(xpath = "//div[@data-testid='card'][.//a[contains(text(),'Cruise')]]")
 	private List<WebElement> cruises;
- 
-	// Cruise prices
-	@FindBy(xpath = "//div[@class=\"css-19q6r6y\"]/descendant::a[contains(text(),'Cruise')]/ancestor::li/descendant::div[@class=\"e7addce19e css-1iufin4\"]")
-	private List<WebElement> prices;
  
 	public CruisePage(WebDriver driver) {
 		this.driver = driver;
@@ -104,32 +99,33 @@ public class CruisePage {
 			System.out.println(
 					"\n------------------------------------------------------------------------------------------------------------------");
 
-//			wait.until(ExpectedConditions.visibilityOf(cruises.get(i)));
-			String title = cruises.get(i).getText();
+			String title = cruises.get(i).findElement(By.xpath(".//a")).getText();
 			System.out.println((i + 1) + ". " + title);
- 
-			String price = prices.get(i).getText();
-			if(price.isEmpty()) {
-				System.out.println("Price not given");
-			}
-			else {
+			
+			try {
+				String price = cruises.get(i).findElement(By.xpath(".//div[contains(@class,'e7addce19e')]")).getText();
 				System.out.println("Price : " + price);
 			}
-
+			catch(Exception e){
+				System.out.println("Price not given");
+			}
+			
 			cruises.get(i).click();
 			Set<String> allWindows = driver.getWindowHandles(); //[Tab1, Tab2]
  
 			for (String w : allWindows) {
 				if (!w.equals(currentWindow)) {
 					driver.switchTo().window(w);
-					String duration = driver
-							.findElement(By.xpath("//div[@class='e7addce19e' and contains(text(),'Duration')]"))
-							.getText();
-					if(duration.isEmpty()) {
-						System.out.println("Duration not given");
-					}
-					else {
+					
+					try {
+						String duration = driver
+								.findElement(By.xpath("//div[@class='e7addce19e' and contains(text(),'Duration')]"))
+								.getText();
 						System.out.println(duration);	
+					}
+					
+					catch(Exception e) {
+						System.out.println("Duration not given");
 					}
 					
 					List<WebElement> languages = driver.findElements(By.xpath(
