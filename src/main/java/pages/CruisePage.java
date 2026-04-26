@@ -104,33 +104,34 @@ public class CruisePage {
 			System.out.println(
 					"\n------------------------------------------------------------------------------------------------------------------");
 
-			wait.until(ExpectedConditions.visibilityOf(cruises.get(i)));
+//			wait.until(ExpectedConditions.visibilityOf(cruises.get(i)));
 			String title = cruises.get(i).getText();
 			System.out.println((i + 1) + ". " + title);
  
-			try {
-				wait.until(ExpectedConditions.visibilityOf(prices.get(i)));
-				String price = prices.get(i).getText();
-				System.out.println("Price : " + price);
-			} catch (Exception e) {
+			String price = prices.get(i).getText();
+			if(price.isEmpty()) {
 				System.out.println("Price not given");
 			}
- 
+			else {
+				System.out.println("Price : " + price);
+			}
+
 			cruises.get(i).click();
 			Set<String> allWindows = driver.getWindowHandles(); //[Tab1, Tab2]
  
 			for (String w : allWindows) {
 				if (!w.equals(currentWindow)) {
 					driver.switchTo().window(w);
-					try {
-						String duration = driver
-								.findElement(By.xpath("//div[@class='e7addce19e' and contains(text(),'Duration')]"))
-								.getText();
-						System.out.println(duration);
-					} catch (Exception e) {
+					String duration = driver
+							.findElement(By.xpath("//div[@class='e7addce19e' and contains(text(),'Duration')]"))
+							.getText();
+					if(duration.isEmpty()) {
 						System.out.println("Duration not given");
 					}
- 
+					else {
+						System.out.println(duration);	
+					}
+					
 					List<WebElement> languages = driver.findElements(By.xpath(
 							"//h3[text()='Audio guide available in multiple languages']/following-sibling::div/descendant::div[@class='a9918d47bf']"));
 					if (languages.isEmpty()) {

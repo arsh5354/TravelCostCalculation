@@ -9,9 +9,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import utils.ConfigReader;
 
-/**
- * Utility class for initializing and managing WebDriver instances.
- */
 public class DriverManager {
 
     private static WebDriver driver;
@@ -39,6 +36,11 @@ public class DriverManager {
 
         return driver;
     }
+//    
+//    public static String getPath() {
+//    	String fpath = System.getProperty("user.dir") +"/testdata/HotelDetails.xlsx";
+//    	return fpath;
+//    }
 
     public static void driverTearDown() {
         if (driver != null) {

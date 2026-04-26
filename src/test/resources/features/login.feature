@@ -6,6 +6,6 @@ Feature: Login Negative Test
     Then Error message should be displayed
 
     Examples:
-      | email               |
+      | email                    |
       | wrong@emailaddress       |
       | secondWrong@emailaddress |

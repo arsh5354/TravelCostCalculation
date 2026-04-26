@@ -5,6 +5,7 @@ import io.cucumber.java.en.*;
 import org.openqa.selenium.JavascriptExecutor;
 import pages.CruisePage;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class CruiseSteps {
@@ -37,11 +38,11 @@ public class CruiseSteps {
     public void apply_filter_of_cruises_and_boats(String filterName) {
     	  cruisePage.clickSearch();
           cruisePage.expandCruiseFilter(js);
+          cruisePage.printCruiseDetails(js);
     }
     
     @Then("Cruise results should be displayed")
-    public void verify_results() {
-    	cruisePage.printCruiseDetails(js);
+    public void verify_results() throws IOException {
         System.out.println("Cruises displayed successfully!");
     }
 }

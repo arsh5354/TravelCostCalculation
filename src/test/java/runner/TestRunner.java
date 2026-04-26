@@ -24,7 +24,7 @@ import utils.RetryAnalyzer;
         monochrome = true,
         dryRun = false
 )
-@Listeners(utils.ExtentReportManager.class)
+//@Listeners(utils.ExtentReportManager.class)
 public class TestRunner extends AbstractTestNGCucumberTests {
 
 	@BeforeSuite

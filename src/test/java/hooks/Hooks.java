@@ -8,9 +8,6 @@ import io.cucumber.java.Before;
 import utils.ConfigReader;
 import utils.Screenshot;
 
-/**
- * Hooks class to manage WebDriver lifecycle for Cucumber scenarios.
- */
 public class Hooks {
 
     @Before

@@ -4,6 +4,7 @@ import base.DriverManager;
 import io.cucumber.java.en.*;
 import pages.HotelSearchPage;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class HotelSearchSteps {
@@ -35,11 +36,11 @@ public class HotelSearchSteps {
     	hotelPage.clickSearch();
         hotelPage.sortByTopReviewed();
         hotelPage.filterFreeWifi();
-        hotelPage.printHotelResults();
     }
 
     @Then("Hotel results should be displayed")
-    public void verify_results() {
+    public void verify_results() throws IOException {
+    	hotelPage.printHotelResults();
         System.out.println("Hotels displayed successfully!");
     }
 }
