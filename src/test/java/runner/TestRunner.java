@@ -8,17 +8,14 @@ import org.testng.annotations.Test;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 import utils.AllureReportManager;
-import utils.RetryAnalyzer;
 
-@Test(retryAnalyzer = RetryAnalyzer.class)
+@Test(retryAnalyzer = utils.RetryAnalyzer.class)
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = {"stepdefinitions", "hooks"},
         plugin = {
-        		 "pretty",                                 // Console output with formatting
-        	        "html:target/cucumber-html-report.html",  // HTML report
-        	        "json:target/cucumber-report.json",       // JSON report
-        	        "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm", // Allure integration
+        		 "pretty",                                 
+        	        "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm", 
         	        "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
         },
         monochrome = true,

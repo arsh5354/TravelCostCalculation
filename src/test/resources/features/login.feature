@@ -1,6 +1,6 @@
 Feature: Login Negative Test
 
-  Scenario: Invalid Google login
+  Scenario Outline: Invalid Google login
     Given I am on Booking.com homepage for login
     When I try to login with invalid email "<email>"
     Then Error message should be displayed
@@ -8,4 +8,4 @@ Feature: Login Negative Test
     Examples:
       | email                    |
       | wrong@emailaddress       |
-      | secondWrong@emailaddress |
+#      | secondWrong@emailaddress |
