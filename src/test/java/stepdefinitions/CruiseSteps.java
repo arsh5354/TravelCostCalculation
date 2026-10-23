@@ -38,6 +38,7 @@ public class CruiseSteps {
     public void apply_filter_of_cruises_and_boats(String filterName) {
     	  cruisePage.clickSearch();
           cruisePage.expandCruiseFilter(js);
+//          cruisePage.selectLondonOption();
     }
     
     @Then("Cruise results should be displayed")

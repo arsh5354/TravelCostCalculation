@@ -9,6 +9,7 @@ import java.util.List;
 
 public class HotelSearchPage {
 	WebDriver driver;
+	JavascriptExecutor js;
 
 	// 1. Registration pop-up dismiss
 	@FindBy(xpath = "//button[@aria-label='Dismiss sign-in info.']")
@@ -19,7 +20,7 @@ public class HotelSearchPage {
 	private WebElement destinationContainer;
 
 	// 3. Destination text box
-	@FindBy(id = ":R55amr5:")
+	@FindBy(id = "searchbox-horizontal-destination-input")
 	private WebElement destinationTextBox;
 
 	// 4. Nairobi location option
@@ -51,7 +52,7 @@ public class HotelSearchPage {
 	private WebElement expandFacilities;
 
 	// Free Wifi option
-	@FindBy(xpath = "//div[text()='Free Wifi']")
+	@FindBy(xpath = "//span[text()=\"Facilities\"]/ancestor::fieldset/descendant::div[text()=\"Free Wifi\"]")
 	private WebElement freeWifiOption;
 
 	// Hotel results
@@ -114,6 +115,8 @@ public class HotelSearchPage {
 	}
 
 	public void filterFreeWifi() {
+		js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView(true)", expandFacilities);
 		expandFacilities.click();
 		freeWifiOption.click();
 	}

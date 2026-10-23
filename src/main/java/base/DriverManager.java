@@ -36,17 +36,12 @@ public class DriverManager {
 
         return driver;
     }
-//    
-//    public static String getPath() {
-//    	String fpath = System.getProperty("user.dir") +"/testdata/HotelDetails.xlsx";
-//    	return fpath;
-//    }
 
-    public static void driverTearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
+//    public static void driverTearDown() {
+//        if (driver != null) {
+//            driver.quit();
+//        }
+//    }
 
     public static void quitDriver() {
         if (driver != null) {

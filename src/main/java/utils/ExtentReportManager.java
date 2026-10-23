@@ -15,7 +15,7 @@ public class ExtentReportManager implements ITestListener {
 	ExtentTest test;
 
 	public void onStart(ITestContext result) {
-		String filePath = System.getProperty("user.dir") + "\\target\\extentReport\\report.html";
+		String filePath = System.getProperty("user.dir") + "\\target\\ExtentReport.html";
 		spark = new ExtentSparkReporter(filePath);
 
 		spark.config().setDocumentTitle("Automation Test Report");

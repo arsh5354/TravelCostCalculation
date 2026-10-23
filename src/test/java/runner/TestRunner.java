@@ -21,7 +21,7 @@ import utils.AllureReportManager;
         monochrome = true,
         dryRun = false
 )
-//@Listeners(utils.ExtentReportManager.class)
+@Listeners(utils.ExtentReportManager.class)
 public class TestRunner extends AbstractTestNGCucumberTests {
 
 	@BeforeSuite

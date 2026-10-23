@@ -35,11 +35,11 @@ public class CruisePage {
 	private WebElement searchButton;
  
 	// Sidebar arrow button
-	@FindBy(xpath = "//span[text()='Tours ']/ancestor::span/following-sibling::button")
+	@FindBy(xpath = "//div[text()='Tours ']/ancestor::span/following-sibling::button[@type=\"button\"]")
 	private WebElement arrowButton;
  
 	// Boat tours & cruises filter
-	@FindBy(xpath = "//span[text()='Boat tours & cruises']")
+	@FindBy(xpath = "//div[text()='Boat tours & cruises']")
 	private WebElement cruiseFilter;
  
 	// Cruise cards
@@ -67,8 +67,9 @@ public class CruisePage {
 		wait.until(ExpectedConditions.visibilityOf(londonOption)).click();
 	}
  
-	public void selectLondonOption() {
-	}
+//	public void selectLondonOption() {
+//		wait.until(ExpectedConditions.visibilityOf(londonOption)).click();
+//	}
  
 	public void selectCheckInDate(LocalDate date) {
 		String xpath = String.format("//span[@data-date='%s']", date);
